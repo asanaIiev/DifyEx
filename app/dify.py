@@ -2,7 +2,7 @@ import aiohttp
 import logging
 from config import API_URL, API_KEY
 
-async def send_to_d(query: str, user_id: str, conversation_id: str) -> dict:
+async def send_to_d(query: str, user_id: str, conversation_id: str):
 
     headers = {
         'Authorization': f'Bearer {API_KEY}',
@@ -23,7 +23,7 @@ async def send_to_d(query: str, user_id: str, conversation_id: str) -> dict:
                     result = await response.json()
                     return {
                         'success': True,
-                        'text': result.get('answer', '⚠️ Пустой ответ от сервера.'),
+                        'text': result.get('answer', ''),
                         'conversation_id': result.get('conversation_id', '')
                     }
 
