@@ -11,4 +11,4 @@ def load_data():
 
 def save_data(data):
     with open(json_storage, 'w', encoding='utf-8') as file:
-        return json.dump(data, file, ensure_ascii=False, indent=2)
+        return json.dump(data, file, ensure_ascii=False, indent=4)
