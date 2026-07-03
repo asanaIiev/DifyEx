@@ -26,20 +26,11 @@ async def send_to_d(query: str, user_id: str, conversation_id: str) -> dict:
                         'text': result.get('answer', '⚠️ Пустой ответ от сервера.'),
                         'conversation_id': result.get('conversation_id', '')
                     }
-                elif response.status == 401:
-                    logging.error("Dify API Error: Неверный API KEY (Unauthorized).")
-                    return {'success': False, 'text': '⚠️ Ошибка авторизации: Неверный API-ключ сервиса.'}
-                elif response.status == 404:
-                    logging.error("Dify API Error: Неверный URL (Not Found).")
-                    return {'success': False, 'text': '⚠️ Ошибка подключения: Неверный адрес API.'}
-                else:
-                    error_body = await response.text()
-                    logging.error(f"Dify API Error {response.status}: {error_body}")
-                    return {'success': False, 'text': f'⚠️ Ошибка сервера Dify (Код {response.status}).'}
 
-    except aiohttp.ClientConnectorError:
-        logging.error("Dify API Error: Отсутствует интернет или сервер недоступен.")
-        return {'success': False, 'text': '🌐 Нет подключения к интернету или сервер Dify недоступен.'}
     except Exception as e:
-        logging.error(f"Dify API Unknown Error: {e}")
-        return {'success': False, 'text': '❌ Произошла неизвестная ошибка при считывании ответа.'}
+        logging.error(f"Error {e}")
+        return {
+            'success': False,
+            'text': result['text'],
+            'conversation_id': conversation_id
+        }
