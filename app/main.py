@@ -64,7 +64,7 @@ async def cmd_help(message: Message):
         f'<b>/about - информация о боте</b>\n'
         f'<b>/new - начать новый диалог</b>\n'
         f'<b>/history - показать историю диалога</b>\n'
-        f'<b>/clear - очистить историю дилога</b>'
+        f'<b>/clear - очистить историю диалога</b>'
     )
     await message.answer(text)
 
