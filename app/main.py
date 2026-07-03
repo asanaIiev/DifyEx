@@ -1,7 +1,6 @@
 import asyncio
 import datetime
 import logging
-import uuid
 from aiogram import Bot, Dispatcher, Router, F
 from aiogram.enums import ChatAction
 from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup, CallbackQuery
